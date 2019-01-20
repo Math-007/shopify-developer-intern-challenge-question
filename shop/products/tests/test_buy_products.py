@@ -1,4 +1,5 @@
 import pytest
+from django.http import HttpResponseNotFound
 from django.test import TestCase
 from django.utils.encoding import force_text
 from shop.models import Product
@@ -24,3 +25,8 @@ class TestBuyProduct(TestCase):
         self.assertJSONEqual(force_text(response.content), self.expected_json_buy_apple)
         banana = list(Product.objects.filter(title='banana'))[0]
         self.assertEqual(banana.inventory_count, 14)
+
+    def test_buy_not_found_product(self):
+        response = self.client.delete('/shop/products/buy/itemdoesnotexist')
+        self.assertJSONEqual(force_text(response.content), {"Item not found": "itemdoesnotexist"})
+        self.assertEqual(response.status_code, HttpResponseNotFound.status_code)
