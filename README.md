@@ -1,20 +1,20 @@
-## shopify-developper-intern-challend-question
+# shopify developper intern challenge question
 see https://docs.google.com/document/d/1J49NAOIoWYOumaoQCKopPfudWI_jsQWVKlXmw1f1r-4/edit for details
 
-The API was built using the python framwork django
+The API was built using the python framework django
 
-A Dockerfile is provided to run the server and its unittest
+A Dockerfile is provided to start the server and run the unit tests
 
 ## Enter the docker container
 
 ```
-(shopify) $ docker build --tag=shopify -f Dockerfile.shopify .
-(shopify) $ docker run -p 8000:8000 -it shopify:latest
+$ docker build --tag=shopify -f Dockerfile.shopify .
+$ docker run -p 8000:8000 -it shopify:latest
 ```
 
 ## Once in the docker container 
 
-* Run server
+* Start server
 ```
 (/home/root/shopify) $ ./manage.py runserver 0.0.0.0:8000
 ```
@@ -22,6 +22,11 @@ A Dockerfile is provided to run the server and its unittest
 * Run unittests
 ```
 (/home/root/shopify) $ pytest
+```
+
+* Initialize the database with a few products
+```
+(/home/root/shopify) $ ./populate_database.sh
 ```
 
 ## Usage
@@ -36,14 +41,12 @@ curl --request GET \
 curl --request GET \
   --url http://localhost:8000/shop/products/
 
-* Get information of a specific product 
+* Get information of a specific product (ex: apple)
 
 curl --request GET \
-  --url http://localhost:8000/shop/products/<title>
+  --url http://localhost:8000/shop/products/apple
 
-* Buy a product
-
+* Buy a product (ex: apple)
+ 
 curl --request DELETE \
   --url http://localhost:8000/shop/products/buy/apple
-
-
