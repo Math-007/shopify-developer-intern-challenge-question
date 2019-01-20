@@ -11,3 +11,5 @@ WORKDIR /home/root/shopify
 COPY . .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
+
+RUN find -name "*.pyc" -delete
