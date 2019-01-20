@@ -1,6 +1,9 @@
 #!/bin/sh
 
-python3 manage.py shell -c "
+./manage.py migrate
+./manage.py migrate --run-syncdb
+
+./manage.py shell -c "
 from shop.models import Product
 
 Product.objects.filter().delete()

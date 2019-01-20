@@ -1,4 +1,4 @@
-# shopify developper intern challenge question
+# shopify developer intern challenge question
 see https://docs.google.com/document/d/1J49NAOIoWYOumaoQCKopPfudWI_jsQWVKlXmw1f1r-4/edit for details
 
 The API was built using the python framework django
@@ -14,19 +14,19 @@ $ docker run -p 8000:8000 -it shopify:latest
 
 ## Once in the docker container 
 
+* Initialize the database with a few products
+```
+/home/root/shopify $ ./populate_database.sh
+```
+
 * Start server
 ```
-(/home/root/shopify) $ ./manage.py runserver 0.0.0.0:8000
+/home/root/shopify $ ./manage.py runserver 0.0.0.0:8000
 ```
 
 * Run unittests
 ```
-(/home/root/shopify) $ pytest
-```
-
-* Initialize the database with a few products
-```
-(/home/root/shopify) $ ./populate_database.sh
+/home/root/shopify $ pytest
 ```
 
 ## Usage
