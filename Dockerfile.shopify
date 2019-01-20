@@ -13,3 +13,4 @@ COPY . .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 RUN find -name "*.pyc" -delete
+RUN echo "export PS1='$(whoami):$PWD $ '" >> /root/.bashrc
