@@ -23,7 +23,7 @@ class TestBuyProduct(TestCase):
     def test_buy_product(self):
         response = self.client.delete('/shop/products/buy/banana')
         self.assertJSONEqual(force_text(response.content), self.expected_json_buy_apple)
-        banana = list(Product.objects.filter(title='banana'))[0]
+        banana = Product.objects.get(title='banana')
         self.assertEqual(banana.inventory_count, 14)
 
     def test_buy_not_found_product(self):
